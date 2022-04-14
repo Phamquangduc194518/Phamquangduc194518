@@ -27,7 +27,7 @@ dblist* makeNewNode(elementtype data){
     return New;
 }
 
-void displayNode(dblist* p){ //Must fix
+void display(dblist* p){ 
     if(p==NULL){
         printf("ERROR pointer NULL\n");
         return;
@@ -38,7 +38,7 @@ void displayNode(dblist* p){ //Must fix
 void traverseList(dblist *root){
 	dblist *cur;
     for(cur=root;cur!=NULL;cur=cur->next)
-        displayNode(cur);
+        display(cur);
 }
 
 void appendList(elementtype data,dblist **root,dblist **cur,dblist **tail){
@@ -77,7 +77,7 @@ typedef struct node_type{
     struct node_type *left,*right;
 }nodeType;
 
-typedef nodeType *treetype;//treetype a <=> nodeType* a
+typedef nodeType *treetype;
 
 void makeNullTree(treetype* N){
     (*N)=NULL;
@@ -129,7 +129,7 @@ void inOrderPrint(treetype T){
 	}
 }
 
-treetype searchT(treetype T, elmType x){//Search
+treetype searchT(treetype T, elmType x){
 	if(T==NULL) return T;
 	if(compare(x,T->element)==0) return T;
 	else if(isLeaf(T))return NULL;
@@ -146,7 +146,7 @@ void freeTree(treetype T){
 }
 
 
-treetype searchTbyWord(treetype T, char* word){//Search
+treetype searchTbyWord(treetype T, char* word){
 	elmType wordData;
 	strcpy(wordData.word, word);
 	return searchT(T, wordData);
